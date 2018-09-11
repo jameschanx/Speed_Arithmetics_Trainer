@@ -27,8 +27,12 @@ class Quiz:
         self.populate_quiz()
         
     def populate_quiz(self):
-        for items in self.categories.items():
-            print(items)
+        for q_type, count in self.categories.items():
+            for _ in range(count):
+                q = self.get_question(q_type)
+                q = np.array(q, ndmin=2)
+                self.problems = np.vstack((self.problems, q))
+        np.random.shuffle(self.problems)
     
     def get_question(self, q_type):
         if q_type == '10to20':
@@ -81,7 +85,9 @@ class Quiz:
             b = a
         return a,b,a*b
     def show_answers(self):
-        pass
+        print(str(self.problems.shape[0]) + ' answers')
+        for i in range(self.problems.shape[0]):
+            print(self.problems[i,1])
         
     def show_problems(self):
         print(str(self.problems.shape[0]) + ' problems')
@@ -103,19 +109,7 @@ class Quiz:
     
 
 if __name__=="__main__":
-    
-#        self.categories = {'10to20':5,
-#                          'firstsamelastsum10':5,
-#                          'x11':2,
-#                          'almost100':5,
-#                          '9series':2,
-#                          'twodigit':10,
-#                          '3digit':10,
-#                          'sq_last5':5,
-#                          'sq_10to20':5,
-#                          'sq_almost100':5,
-#                          'sq_2digit':5,
-#                          'sq_3digit':5}
+    np.random.seed(1651916513)
     quiz = Quiz()
     quiz.show_problems()
-    print(quiz.get_question('sq_3digit'))
+    quiz.show_answers()
