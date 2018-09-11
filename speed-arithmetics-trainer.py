@@ -15,7 +15,7 @@ class Quiz:
                           'x11':2,
                           'almost100':5,
                           '9series':2,
-                          'twodigit':10,
+                          '2digit':30,
                           '3digit':10,
                           'sq_last5':5,
                           'sq_10to20':5,
@@ -41,7 +41,7 @@ class Quiz:
             a = int(str(first) + str(a_second))
             b = int(str(first) + str(b_second))
         elif q_type == 'x11':
-            nums=[11]
+            nums = [11]
             nums.insert(np.random.randint(0,2), np.random.randint(10,1000))
             a = nums[0]
             b = nums[1]
@@ -49,21 +49,36 @@ class Quiz:
             a = np.random.randint(95,106)
             b = np.random.randint(95,106)
         elif q_type == '9series':
-            pass
-        elif q_type == 'twodigit':
-            pass
+            nines = [99,999]
+            nums = [nines[np.random.randint(0,2)]]
+            if nums[0] == 99:
+                   nums.insert(np.random.randint(0,2), np.random.randint(10,100))
+            else:
+                   nums.insert(np.random.randint(0,2), np.random.randint(10,1000))
+            a = nums[0]
+            b = nums[1]
+        elif q_type == '2digit':
+            a = np.random.randint(10,100)
+            b = np.random.randint(10,100)
         elif q_type == '3digit':
-            pass
+            a = np.random.randint(100,1000)
+            b = np.random.randint(100,1000)
         elif q_type == 'sq_last5':
-            pass
+            first = np.random.randint(1,10)
+            a = int(str(first) + str(5))
+            b = a
         elif q_type == 'sq_10to20':
-            pass
+            a = np.random.randint(11,20)
+            b = a
         elif q_type == 'sq_almost100':
-            pass
+            a = np.random.randint(95,106)
+            b = a
         elif q_type == 'sq_2digit':
-            pass
+            a = np.random.randint(10,100)
+            b = a
         elif q_type == 'sq_3digit':
-            pass
+            a = np.random.randint(100,1000)
+            b = a
         return a,b,a*b
     def show_answers(self):
         pass
@@ -103,4 +118,4 @@ if __name__=="__main__":
 #                          'sq_3digit':5}
     quiz = Quiz()
     quiz.show_problems()
-    print(quiz.get_question('almost100'))
+    print(quiz.get_question('sq_3digit'))
