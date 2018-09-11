@@ -23,12 +23,38 @@ class Quiz:
                           'sq_2digit':5,
                           'sq_3digit':5}
         
-        self.problems = np.zeros((sum(self.categories.values()),3))
+        self.problems = np.empty((0,3))
         self.populate_quiz()
         
     def populate_quiz(self):
-        pass
+        for items in self.categories.items():
+            print(items)
     
+    def get_question(q_type):
+        if q_type == '10to20':
+            np.random.randint(10,20)
+        if q_type == 'firstsamelastsum10':
+            pass
+        if q_type == 'x11':
+            pass
+        if q_type == 'almost100':
+            pass
+        if q_type == '9series':
+            pass
+        if q_type == 'twodigit':
+            pass
+        if q_type == '3digit':
+            pass
+        if q_type == 'sq_last5':
+            pass
+        if q_type == 'sq_10to20':
+            pass
+        if q_type == 'sq_almost100':
+            pass
+        if q_type == 'sq_2digit':
+            pass
+        if q_type == 'sq_3digit':
+            pass
     def show_answers(self):
         pass
         
@@ -53,5 +79,4 @@ class Quiz:
 
 if __name__=="__main__":
     quiz = Quiz()
-    quiz.show_problems()
     quiz.show_problems()
